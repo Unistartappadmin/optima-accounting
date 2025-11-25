@@ -1,16 +1,878 @@
----
-
----
-
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optima Accounting - Website Creation Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0F2B3C;
+            --primary-gold: #D4A855;
+            --pure-white: #FFFFFF;
+            --soft-cream: #F8F6F3;
+            --border-light: #E8E9EA;
+            --text-secondary: #6B7280;
+            --accent-teal: #2C7873;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--primary-dark);
+            background: var(--pure-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1a4b5c 100%);
+            color: var(--pure-white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .header .client-name {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        /* Main Content */
+        .main {
+            background: var(--pure-white);
+            padding: 50px 0;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 30px;
+            background: var(--primary-gold);
+            border-radius: 2px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: var(--soft-cream);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(15, 43, 60, 0.1);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Pricing */
+        .pricing-card {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1a4b5c 100%);
+            color: var(--pure-white);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        .payment-terms {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .payment-terms h4 {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--soft-cream);
+            border-radius: 8px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            border: 3px solid var(--pure-white);
+        }
+
+        .timeline-item h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--soft-cream);
+            padding: 50px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-button {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background: #c19940;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 168, 85, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--pure-white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            font-weight: 600;
+        }
+
+        /* Mockup Styles */
+        .mockup-container {
+            margin: 40px 0;
+            padding: 0 20px;
+        }
+
+        .browser-frame {
+            background: #f5f5f5;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(15, 43, 60, 0.15);
+            margin-bottom: 20px;
+        }
+
+        .browser-header {
+            background: #e5e5e5;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #d0d0d0;
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff5f57;
+        }
+
+        .browser-dots span:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .browser-dots span:nth-child(3) {
+            background: #28ca42;
+        }
+
+        .browser-url {
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .website-mockup {
+            background: white;
+            padding: 0;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .mockup-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #f0f0f0;
+            background: white;
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-menu span {
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-menu span:hover {
+            color: var(--primary-dark);
+        }
+
+        .nav-cta {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: #c19940;
+        }
+
+        .mockup-hero {
+            padding: 60px 40px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #c19940;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-dark);
+            padding: 15px 30px;
+            border: 2px solid var(--primary-dark);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 30px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(15, 43, 60, 0.1);
+            border: 1px solid #f0f0f0;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .card-header {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 75%;
+            background: var(--primary-gold);
+            border-radius: 4px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .whatsapp-widget {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-widget:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+
+        .whatsapp-icon {
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-text {
+            font-size: 0.9rem;
+        }
+
+        .mockup-note {
+            background: var(--soft-cream);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .mockup-note p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .disclaimer {
+            margin: 15px 0 5px;
+            padding: 14px 16px;
+            border-left: 4px solid var(--primary-gold);
+            background: #f9f7f3;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+
+            .mockup-container {
+                padding: 0 10px;
+            }
+
+            .website-mockup {
+                padding: 15px;
+            }
+
+            .mockup-hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin-bottom: 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Website Creation Proposal</h1>
+            <p class="subtitle">Professional digital presence that speaks your language</p>
+            <div class="client-name">Optima Accounting</div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Introduction -->
+            <section class="section">
+                <h2 class="section-title">Your Vision, Our Expertise</h2>
+                <p class="intro-text">
+                    We don't just build websites; we create digital experiences that turn visitors into clients. 
+                    For Optima Accounting, we're crafting a complete online presence from the ground up, designed specifically for UK professionals who value clarity, trust, and results.
+                </p>
+                <p class="intro-text">
+                    No jargon. No unnecessary complexity. Just a website that works as hard as you do.
+                </p>
+            </section>
+
+            <!-- Hero Page Mockup -->
+            <section class="section">
+                <h2 class="section-title">Visual Preview</h2>
+                <p class="intro-text">Here's how your homepage will look: clean, professional, and conversion-focused:</p>
+                <div class="disclaimer">
+                    This is one way your homepage could look. Every element (colors, layout, and design details) is fully customizable because we build everything bespoke to your brand.
+                </div>
+                
+                <div class="mockup-container">
+                    <div class="browser-frame">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="browser-url">optima-accounting.co.uk</div>
+                        </div>
+                        <div class="website-mockup">
+                            <!-- Navigation -->
+                            <nav class="mockup-nav">
+                                <div class="nav-logo">
+                                    <strong>OPTIMA</strong> Accounting
+                                </div>
+                                <div class="nav-menu">
+                                    <span>Services</span>
+                                    <span>Portfolio</span>
+                                    <span>About</span>
+                                    <span>Contact</span>
+                                    <button class="nav-cta">Get Quote</button>
+                                </div>
+                            </nav>
+                            
+                            <!-- Hero Section -->
+                            <div class="mockup-hero">
+                                <div class="hero-content">
+                                    <h1>UK Accounting Made Simple</h1>
+                                    <p>Professional accounting services for expats, freelancers, and small businesses. Clear pricing, fast turnaround, zero confusion.</p>
+                                    <div class="hero-buttons">
+                                        <button class="btn-primary">Get Your Free Quote</button>
+                                        <button class="btn-secondary">Book a Call</button>
+                                    </div>
+                                    <div class="trust-badges">
+                                        <span>✓ HMRC Approved</span>
+                                        <span>✓ 24h Response</span>
+                                        <span>✓ Fixed Prices</span>
+                                    </div>
+                                </div>
+                                <div class="hero-visual">
+                                    <div class="hero-card">
+                                        <div class="card-header">Dashboard Preview</div>
+                                        <div class="card-content">
+                                            <div class="progress-bar"></div>
+                                            <div class="stats">
+                                                <div class="stat">
+                                                    <div class="stat-number">£2,340</div>
+                                                    <div class="stat-label">Tax Saved</div>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="stat-number">99%</div>
+                                                    <div class="stat-label">On Time</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- WhatsApp Widget Preview -->
+                            <a href="https://wa.me/+447459328582?text=Hi,%20I%27d%20like%20to%20know%20more%20about%20your%20accounting%20services" class="whatsapp-widget">
+                                <div class="whatsapp-icon">💬</div>
+                                <div class="whatsapp-text">Chat with us</div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="mockup-note">
+                        <p><strong>Mobile-First Design:</strong> This layout adapts seamlessly to smartphones and tablets, ensuring your clients have the perfect experience on any device.</p>
+                        <p style="margin-top: 15px; font-style: italic; color: #888;"><strong>Note:</strong> Colors and design elements shown are for demonstration purposes only. You can choose any color palette that matches your brand identity and preferences.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What's Included -->
+            <section class="section">
+                <h2 class="section-title">What You Get</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Strategic Design</h3>
+                        <p>Modern, professional design that builds trust from the first click. Mobile-first approach ensuring perfect experience on every device.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Fast Development</h3>
+                        <p>Built with cutting-edge technology (Astro + React + Tailwind) for lightning-fast loading and smooth performance.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">✍️</div>
+                        <h3>Clear Content</h3>
+                        <p>Professional copy that explains your services in plain English. No confusing financial jargon; just clear value.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📞</div>
+                        <h3>Lead Generation</h3>
+                        <p>Contact forms and quote systems designed to convert visitors into clients, not just collect dust.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💬</div>
+                        <h3>WhatsApp Integration</h3>
+                        <p>Direct communication widget allowing clients to reach you instantly. Perfect for quick questions and consultations.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📝</div>
+                        <h3>Blog Integration</h3>
+                        <p>Professional blog system for sharing tax tips, industry updates, and building authority. Easy content management included.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Mobile Optimized</h3>
+                        <p>Flawless experience on smartphones and tablets. Your clients can access services anywhere, anytime.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h3>Unistart App Integration</h3>
+                        <p>Seamless integration with Unistart mobile app, plus social media promotion across our channels for increased visibility and reach.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔒</div>
+                        <h3>Complete Package</h3>
+                        <p>GDPR compliance, accessibility standards, cookie consent banner/policy integration, analytics setup; everything you need to launch with confidence.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment -->
+            <section class="section">
+                <h2 class="section-title">Investment</h2>
+                <div class="pricing-card">
+                    <h3>Complete Website Creation</h3>
+                    <div class="price">
+                        <span class="price-currency">£</span>600
+                    </div>
+                    <p>Everything included. No hidden costs. No surprises.</p>
+                    
+                    <div class="payment-terms">
+                        <h4>Payment Structure</h4>
+                        <p><strong>£300</strong>: Project start (50%)</p>
+                        <p><strong>£300</strong>: Project completion (50%)</p>
+                        <p style="margin-top: 15px; opacity: 0.8;">Payment terms: 3 days from invoice date</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline -->
+            <section class="section">
+                <h2 class="section-title">How We Work</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Week 1: Strategy & Foundation</h4>
+                        <p>Brand positioning, content strategy, and technical setup. First payment due.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Week 2: Design & Development</h4>
+                        <p>UI design, content creation, and core development. Regular updates and feedback loops.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Week 3: Polish & Launch</h4>
+                        <p>Final testing, compliance checks (including cookie consent setup), and launch preparation. Second payment due upon completion.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Week 4: Launch & Support</h4>
+                        <p>Go live, analytics setup, and handover training. You're ready to grow your business online.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us -->
+            <section class="section">
+                <h2 class="section-title">Why This Works</h2>
+                <div class="intro-text">
+                    <p><strong>No cookie-cutter templates.</strong> Your website will be built specifically for accounting professionals who serve UK clients.</p>
+                    <p><strong>Performance matters.</strong> Fast-loading sites rank better and convert better. We optimize everything.</p>
+                    <p><strong>Clear communication.</strong> You'll always know what's happening and what's next. No technical confusion.</p>
+                    <p><strong>Results-focused.</strong> Every design decision aims to turn visitors into clients, not just impress other designers.</p>
+                    <p><strong>Unistart app advantage.</strong> Your website integrates seamlessly with our Unistart mobile application, giving you cross-platform visibility and automated social media promotion across Facebook, Instagram, and TikTok channels for enhanced reach.</p>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h3>Ready to Build Something Great?</h3>
+                <p>Let's create a website that works as professionally as you do.</p>
+                <a href="https://wa.me/+447459328582?text=Hi,%20I%27m%20interested%20in%20the%20website%20creation%20proposal%20for%20Optima%20Accounting" class="cta-button">
+                    Let's Start Your Project →
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Professional web development for ambitious businesses</p>
+            <div class="contact-info">
+                <p>📱 07459 328 582</p>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
