@@ -283,6 +283,7 @@
 
         .contact-info {
             font-weight: 600;
+            color: white;
         }
 
         /* Mockup Styles */
@@ -470,6 +471,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
 
         .hero-visual {
@@ -639,6 +641,84 @@
             .nav-menu {
                 display: none;
             }
+
+            /* Mobile section titles - centered without golden bar */
+            .section-title {
+                text-align: center;
+                padding-left: 0;
+            }
+
+            .section-title::before {
+                display: none;
+            }
+
+            /* Fix stats overlap in dashboard */
+            .hero-card {
+                padding: 20px;
+                max-width: 280px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .stat {
+                text-align: center;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            /* WhatsApp widget mobile positioning - centered under dashboard */
+            .whatsapp-widget {
+                position: static;
+                display: block;
+                margin: 20px auto 0;
+                width: fit-content;
+                bottom: auto;
+                right: auto;
+            }
+
+            /* Trust badges mobile - stack vertically to prevent wrapping */
+            .trust-badges {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .trust-badges span {
+                justify-content: center;
+            }
+
+            /* Why This Works section mobile padding */
+            .section:last-child .intro-text {
+                padding: 0 10px;
+            }
+
+            .whatsapp-text {
+                font-size: 0.8rem;
+            }
+
+            /* Pricing card mobile padding */
+            .pricing-card {
+                padding: 30px 20px;
+                margin: 20px 0;
+            }
+
+            /* CTA button mobile optimization */
+            .cta-section {
+                padding: 30px 20px;
+            }
+
+            .cta-button {
+                padding: 18px 30px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -761,7 +841,7 @@
                     <div class="service-card">
                         <div class="service-icon">⚡</div>
                         <h3>Fast Development</h3>
-                        <p>Built with cutting-edge technology (Astro + React + Tailwind) for lightning-fast loading and smooth performance.</p>
+                        <p>Custom-built with the latest technologies for lightning-fast loading and smooth performance. No templates, just professional code.</p>
                     </div>
                     <div class="service-card">
                         <div class="service-icon">✍️</div>
